@@ -1,44 +1,26 @@
 {
   "project_info": {
-    "project_number": "584033685327",
-    "project_id": "expensage-44282",
-    "storage_bucket": "expensage-44282.firebasestorage.app"
+    "project_number": "839893684341",
+    "project_id": "fintxapp-expensage",
+    "storage_bucket": "fintxapp-expensage.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:584033685327:android:8492171c28ccf19183bf3a",
+        "mobilesdk_app_id": "1:839893684341:android:80f69f33e73dc8d6aae83c",
         "android_client_info": {
           "package_name": "com.fintxapp.expensage"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "584033685327-rrschi6hi67gfibb5q5ivic7k3er7fln.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.fintxapp.expensage",
-            "certificate_hash": "1cd8ade4e2bd40c7e21fe0cbc31787d95c7ceb25"
-          }
-        },
-        {
-          "client_id": "584033685327-bp5pl37pi5ljd12ems4g6n5eadee6756.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD70a-OP1CkY2ptLfz6sp0kFrXtLaGoW6Y"
+          "current_key": "AIzaSyCU9Bsr4Opy4s4rzUmd2jPw2JwkRo-jrpc"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "584033685327-98fl260t35407rmcmfaidl2v2bp1221j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -8,8 +8,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
@@ -25,9 +24,6 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
 
 
-    <!-- Android 13+ notification permission -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-
     <!-- Optional (agar exact alarm use kar rahe ho) -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
@@ -37,6 +33,14 @@
         android:label="Expensage"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- FCM Settings -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="basic_channel" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
 
         <activity
             android:name=".MainActivity"
@@ -58,6 +62,9 @@
             </intent-filter>
 
         </activity>
+
+
+
 
         <!-- ✅ Receivers yaha hone chahiye (activity ke bahar) -->
 
