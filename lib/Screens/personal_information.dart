@@ -90,7 +90,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
             children: [
               ListTile(
                 leading: const Icon(Icons.photo_library),
-                title: const Text("Choose from Gallery"),
+                title: Text("choose_from_gallery".tr()),
                 onTap: () async {
                   Navigator.pop(context);
                   final XFile? image =
@@ -120,7 +120,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera_alt),
-                title: const Text("Take a Photo"),
+                title: Text("take_a_photo".tr()),
                 onTap: () async {
                   Navigator.pop(context);
                   final XFile? image =
@@ -155,7 +155,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
 
     if (userId == null || userId.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User ID not found')),
+        SnackBar(content: Text('user_id_not_found'.tr())),
       );
       setState(() => _isLoading = false);
       return;
@@ -324,8 +324,14 @@ class _PersonalInformationState extends State<PersonalInformation> {
           child: Column(
             children: [
               const SizedBox(height: 10),
-              _buildInputField(title: "Name", controller: fullNameController),
+
+              _buildInputField(
+                  title: "full_name".tr(),
+                  controller: fullNameController,
+                keyboardType: TextInputType.name
+              ),
               const SizedBox(height: 20),
+
               _buildInputField(
                 title: "email".tr(),
                 controller: emailController,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dio/dio.dart';
@@ -332,11 +333,11 @@ class _SignInFormState extends State<SignInForm> {
               // ScaffoldMessenger.of(context).showSnackBar(
               //   SnackBar(content: Text(msg ?? "Something went wrong")),
               // );
-
               CustomPopup.show(
-                context: context,
-                title: "Coming Soon",
-                message: "This feature is currently under development and will be available soon.",
+                  context: context,
+                  title: "coming_soon".tr(),
+                  message: "feature_under_development".tr()
+                // "This feature is currently under development and will be available soon.",
               );
 
 

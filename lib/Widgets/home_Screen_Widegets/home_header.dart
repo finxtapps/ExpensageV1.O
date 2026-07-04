@@ -11,18 +11,15 @@ import '../../shared_prefrence/SharedPrefrenceMethods.dart';
 class HomeHeader extends StatefulWidget {
   final List<Map<String, dynamic>> notifications;
 
-  const HomeHeader({
-    super.key,
-    required this.notifications,
-  });
+  const HomeHeader({super.key, required this.notifications});
 
   @override
   State<HomeHeader> createState() => _HomeHeaderState();
 }
 
 class _HomeHeaderState extends State<HomeHeader> {
-  final bool isLoading =false;
-  String name="";
+  final bool isLoading = false;
+  String name = "";
   String? profileImage;
   @override
   void initState() {
@@ -35,13 +32,13 @@ class _HomeHeaderState extends State<HomeHeader> {
     final hour = DateTime.now().hour;
 
     if (hour < 12) {
-      return '🌅 Good morning'.tr();
+      return 'Good_morning'.tr();
     } else if (hour < 17) {
-      return '☀️ Good afternoon'.tr();
+      return 'Good_afternoon'.tr();
     } else if (hour < 21) {
-      return '🌇 Good evening'.tr();
+      return 'Good_evening'.tr();
     } else {
-      return '🌙 Good night'.tr();
+      return 'Good_night'.tr();
     }
   }
 
@@ -54,13 +51,14 @@ class _HomeHeaderState extends State<HomeHeader> {
       profileImage = img;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     int unreadCount = widget.notifications
         .where((e) => (e["isRead"] ?? false) == false)
         .length;
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return  Container(
+    return Container(
       height: MediaQuery.of(context).size.height * 0.35,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
@@ -82,18 +80,15 @@ class _HomeHeaderState extends State<HomeHeader> {
                     height: 50,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 2,
-                      ),
+                      border: Border.all(color: Colors.white, width: 2),
                     ),
-                    child:  Consumer<ProfileNotifier>(
+                    child: Consumer<ProfileNotifier>(
                       builder: (context, profile, child) {
                         return CircleAvatar(
                           backgroundImage: profile.profileImageProvider,
                         );
                       },
-                    )
+                    ),
                   ),
                   const SizedBox(width: 15),
                   // Greeting Text
@@ -110,24 +105,31 @@ class _HomeHeaderState extends State<HomeHeader> {
                           ),
                         ),
 
-
-
-                        isLoading? const CircularProgressIndicator():
-                         Text(
-                          name,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : Text(
+                                name,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                       ],
                     ),
                   ),
                   // Notification Icon
                   Stack(
                     children: [
-                      Icon(Icons.notifications),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/notification');
+                        },
+                        child: Icon(
+                          Icons.notifications,
+                          color: isDarkMode ? Color(0xFFD44D5C) : Colors.white,
+                        ),
+                      ),
 
                       if (unreadCount > 0)
                         Positioned(
@@ -148,11 +150,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                           ),
                         ),
                     ],
-                  )
-
-
-
-
+                  ),
 
                   // InkWell(
                   //   onTap: (){
@@ -174,7 +172,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                 ],
               ),
             ),
-            SizedBox(height: 20.h,)
+            SizedBox(height: 20.h),
           ],
         ),
       ),

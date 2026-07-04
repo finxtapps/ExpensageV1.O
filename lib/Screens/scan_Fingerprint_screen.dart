@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
@@ -45,7 +46,7 @@ class _ScanFingerprintScreenState extends State<ScanFingerprintScreen>
       final supported = await _auth.isDeviceSupported();
 
       if (!canCheck || !supported) {
-        _show("Biometric not supported");
+        _show("biometric_not_supported".tr());
         return;
       }
 
@@ -70,10 +71,10 @@ class _ScanFingerprintScreenState extends State<ScanFingerprintScreen>
         if (!mounted) return;
         Navigator.pushReplacementNamed(context, '/home');
       } else {
-        _show("Authentication failed");
+        _show("authentication_failed".tr());
       }
     } catch (e) {
-      _show("Fingerprint error");
+      _show("fingerprint_error".tr());
     } finally {
       setState(() => _isAuthenticating = false);
     }
@@ -118,7 +119,7 @@ class _ScanFingerprintScreenState extends State<ScanFingerprintScreen>
             ),
             child: SafeArea(
                 top: false,
-                child: CustomHeader(title: 'Scan your fingerprint',
+                child: CustomHeader(title: 'scan_your_fingerprint'.tr(),
                 fontsize: 25,),
 
             ),
@@ -148,10 +149,10 @@ class _ScanFingerprintScreenState extends State<ScanFingerprintScreen>
 
           Text(
             _isAuthenticated
-                ? "Fingerprint Verified ✅"
+                ? "fingerprint_verified".tr()
                 : _isAuthenticating
-                ? "Scanning fingerprint..."
-                : "Place your finger on sensor",
+                ? "scanning_fingerprint".tr()
+                : "place_your_finger_on_sensor".tr(),
             style: TextStyle(
               fontSize: 16.sp,
             ),

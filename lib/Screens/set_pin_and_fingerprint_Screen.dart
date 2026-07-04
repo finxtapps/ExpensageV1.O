@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
@@ -93,7 +94,7 @@ class _SetPinAndFingerprintScreenState
             ),
             child: SafeArea(
               top: false,
-              child:CustomHeader(title: 'Security and Privacy',),
+              child:CustomHeader(title: 'security_and_privacy'.tr(),),
 
             ),
           ),
@@ -117,9 +118,9 @@ class _SetPinAndFingerprintScreenState
               }
             },
             child: _buildContentBox(
-              title: _isPinCreated ? 'Change PIN' : 'PIN',
+              title: _isPinCreated ? 'change_pin'.tr() : 'pin'.tr(),
               subtitle:
-              _isPinCreated ? 'Set new PIN' : 'Set four digit PIN',
+              _isPinCreated ? 'set_new_pin'.tr() : 'set_four_digit_pin'.tr(),
               icon: Icons.arrow_forward_ios,
               verified: false,
             ),
@@ -134,11 +135,11 @@ class _SetPinAndFingerprintScreenState
             },
             child: _buildContentBox(
               title: _isFingerprintEnabled
-                  ? 'Fingerprint is verified'
-                  : 'Fingerprint',
+                  ? 'fingerprint_is_verified'.tr()
+                  : 'fingerprint'.tr(),
               subtitle: _isFingerprintEnabled
                   ? ''
-                  : 'Scan and save your fingerprint',
+                  : 'scan_and_save_your_fingerprint'.tr(),
               icon:
               _isFingerprintEnabled ? Icons.check : Icons.arrow_forward_ios,
               verified: _isFingerprintEnabled,

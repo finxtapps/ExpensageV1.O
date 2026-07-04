@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../Api_Models/SignUp_Model.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
@@ -53,7 +54,7 @@ class SignUpAuthService {
           if (user == null || user["id"] == null) {
             print("❌ FAILURE: USER ID MISSING");
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("User ID missing in response")),
+              SnackBar(content: Text("user_id_missing".tr())),
             );
             return false;
           }

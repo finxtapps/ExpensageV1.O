@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/settingScreenWidgets/SettingsContent.dart';
@@ -21,7 +22,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: Column(
         children: [
 
-          HeaderAppbar(title: "Settings",
+          HeaderAppbar(title: "settings".tr(),
             back_btn: false,),
           // const SettingsHeader(),
           Expanded(

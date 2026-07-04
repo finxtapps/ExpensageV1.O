@@ -1,5 +1,10 @@
 {
-  "Good morning,": "सुप्रभात,",
+  "Good_morning": "🌅 सुप्रभात",
+
+  "Good_evening": "🌇 शुभ संध्या",
+  "Good_afternoon": "☀️ शुभ दोपहर",
+  "Good_night": "🌙 शुभ रात्रि",
+
 
 
 "hi_need_help": "हाय, कोई मदद चाहिए?",
@@ -19,6 +24,9 @@
   "help_in_manage_expense": "व्यय प्रबंधन में मदद",
   "enter_expense_details": "व्यय विवरण दर्ज करें",
   "full_name": "पूरा नाम",
+
+  "name": "नाम",
+
   "email": "ईमेल",
   "mobile_number": "मोबाइल नंबर",
   "annual_expense": "वार्षिक व्यय",
@@ -28,11 +36,15 @@
   "annual_income": "वार्षिक आय",
   "upload_annual_income_statement": "वार्षिक आय विवरण अपलोड करें (वैकल्पिक)",
   "how_much_you_spend": "आप कितना खर्च करते हैं?",
+  "Weekly": "साप्ताहिक",
+  "Lifetime": "आजीवन",
+  "Monthly": "मासिक",
+  "Yearly": "वार्षिक",
   "weekly": "साप्ताहिक",
   "lifetime": "आजीवन",
   "monthly": "मासिक",
   "yearly": "वार्षिक",
-  "date": "तारीख",
+  "Date": "तारीख",
   "categories": "श्रेणियाँ",
 
   "category_number": "श्रेणी {}",
@@ -67,5 +79,77 @@
   "language": "भाषा",
   "location": "स्थान",
   "faq_and_support": "सामान्य प्रश्न और सहायता",
-  "search": "खोज"
+  "search": "खोज",
+  "settings": "सेटिंग्स",
+  "user_id_missing": "यूज़र आईडी गायब है",
+  "log_out_successful": "लॉग आउट सफल रहा",
+  "select_image_source": "छवि स्रोत चुनें",
+  "camera": "कैमरा",
+  "gallery": "गैलरी",
+  "please_fill_all_fields": "कृपया सभी फ़ील्ड भरें",
+  "read_all": "सभी पढ़ें",
+  "alert": "चेतावनी",
+  "choose_from_gallery": "गैलरी से चुनें",
+  "take_a_photo": "फोटो लें",
+  "user_id_not_found": "यूज़र आईडी नहीं मिली",
+  "please_select_a_currency": "कृपया मुद्रा चुनें",
+  "no_existing_pin_found": "कोई मौजूदा पिन नहीं मिला",
+  "old_pin_incorrect": "पुराना पिन गलत है",
+  "pin_changed_successfully": "पिन सफलतापूर्वक बदला गया",
+  "pin_must_be_4_digits": "पिन 4 अंकों का होना चाहिए",
+  "choose_theme": "थीम चुनें",
+  "pick_a_theme": "एक थीम चुनें",
+  "mpins_do_not_match": "MPIN मेल नहीं खाते",
+  "mpin_saved_successfully": "MPIN सफलतापूर्वक सहेजा गया!",
+  "please_enter_valid_mpin": "कृपया वैध MPIN दर्ज करें",
+  "user_not_logged_in": "उपयोगकर्ता लॉग इन नहीं है",
+  "ok": "ठीक है",
+  "budget_overflow_msg": "आपका मासिक बजट ओवरफ्लो हो गया है! कृपया अपने खर्चों की समीक्षा करें।",
+  "budget_negative_msg": "आपका मासिक बजट ऋणात्मक है! कृपया अपने खर्चों की समीक्षा करें।",
+  "please_select_income_or_expense": "कृपया आय या व्यय चुनें",
+  "no_data_available": "कोई डेटा उपलब्ध नहीं है",
+  "category": "श्रेणी",
+  "selected": "चयनित",
+  "error": "त्रुटि: {}",
+  "something_went_wrong": "कुछ गलत हो गया!",
+  "form_submitted_successfully": "फॉर्म सफलतापूर्वक सबमिट किया गया!",
+  "invalid_pin": "अमान्य पिन!",
+  "transaction_saved": "लेनदेन सहेजा गया!",
+  "error_picking_file": "फ़ाइल चुनने में त्रुटि: {}",
+  "please_upload_income_statement": "कृपया अपना वार्षिक आय विवरण अपलोड करें",
+  "please_upload_expense_proof": "कृपया अपना व्यय प्रमाण दस्तावेज़ अपलोड करें",
+
+  "security_and_privacy": "सुरक्षा और गोपनीयता",
+  "pin": "पिन",
+  "set_four_digit_pin": "चार अंकों का पिन सेट करें",
+  "fingerprint": "फिंगरप्रिंट",
+  "scan_and_save_your_fingerprint": "अपना फिंगरप्रिंट स्कैन करें और सहेजें",
+
+  "change_pin": "पिन बदलें",
+  "set_new_pin": "नया पिन सेट करें",
+  "fingerprint_is_verified": "फिंगरप्रिंट सत्यापित हो गया है",
+
+  "create_your_four_digit_pin": "अपना चार अंकों का पिन बनाएं",
+  "create_pin": "पिन बनाएं",
+  "re_enter_pin": "पिन दोबारा दर्ज करें",
+  "scan_your_fingerprint": "अपना फिंगरप्रिंट स्कैन करें",
+  "place_your_finger_on_sensor": "अपनी उंगली सेंसर पर रखें",
+
+  "fingerprint_verified": "फिंगरप्रिंट सत्यापित हो गया है ✅",
+  "scanning_fingerprint": "फिंगरप्रिंट स्कैन किया जा रहा है...",
+  "biometric_not_supported": "बायोमेट्रिक समर्थित नहीं है",
+  "fingerprint_error": "फिंगरप्रिंट सत्यापन में त्रुटि हुई",
+  "authentication_failed": "प्रमाणीकरण असफल रहा",
+
+
+  "password_and_security": "पासवर्ड और सुरक्षा",
+  "search_language": "भाषा खोजें",
+  "select_your_current_location": "अपना वर्तमान स्थान चुनें",
+  "find_your_country": "अपना देश खोजें...",
+  "sms_registration_confirmation": "एसएमएस पंजीकरण पुष्टि के लिए हमें आपका एरिया कोड और स्थान आवश्यक है।",
+
+  "coming_soon": "जल्द आ रहा है",
+  "feature_under_development": "यह सुविधा वर्तमान में विकासाधीन है और जल्द ही उपलब्ध होगी।",
+  "highest_expense": "सबसे अधिक खर्च"
+
 }

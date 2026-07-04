@@ -142,7 +142,7 @@ class _CurrencySelectScreenState extends State<CurrencySelectScreen> {
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Please select a currency")),
+                    SnackBar(content: Text("please_select_a_currency".tr())),
                   );
                 }
               },

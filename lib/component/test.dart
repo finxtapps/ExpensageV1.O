@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Api_Services/transaction_history_services.dart';
@@ -71,13 +72,12 @@ class _BalanceCardState extends State<BalanceCard> {
               context: context,
               builder: (ctx) {
                 return AlertDialog(
-                  title: const Text("Alert"),
-                  content: const Text(
-                      "Your Monthly Budget is negative! Please review your expenses."),
+                  title: Text("alert".tr()),
+                  content: Text("budget_negative_msg".tr()),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(ctx).pop(),
-                      child: const Text("OK"),
+                      child: Text("ok".tr()),
                     ),
                   ],
                 );

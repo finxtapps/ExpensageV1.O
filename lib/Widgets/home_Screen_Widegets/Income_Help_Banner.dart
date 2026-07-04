@@ -6,8 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../Screens/incomeTax&Expenses_help_Screen.dart';
 
 class IncomeHelpBanner extends StatefulWidget {
-  final bool customPadding = false;
-  const IncomeHelpBanner({super.key, customPadding});
+  final bool customPadding;
+  final String? heroTag;
+  const IncomeHelpBanner({super.key, this.customPadding = false, this.heroTag});
 
   @override
   State<IncomeHelpBanner> createState() => _IncomeHelpBannerState();
@@ -61,6 +62,10 @@ class _IncomeHelpBannerState extends State<IncomeHelpBanner>
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final mediaHeight = MediaQuery.of(context).size.height;
+    
+    // Default tags if none provided
+    final effectiveTag = widget.heroTag ?? (isDarkMode ? "helpFormHero1" : "helpFormHero");
+
     if (isDarkMode) {
       return Padding(
         padding: EdgeInsets.only(left: 20.0, right: 20, top: 120.h),
@@ -69,7 +74,7 @@ class _IncomeHelpBannerState extends State<IncomeHelpBanner>
             animation: _controller,
             builder: (context, child) {
               return Hero(
-                tag: "helpFormHero1",
+                tag: effectiveTag,
                 child: Material(
                   color: Colors.transparent,
                   child: Padding(
@@ -146,7 +151,7 @@ class _IncomeHelpBannerState extends State<IncomeHelpBanner>
       return Padding(
         padding: EdgeInsets.only(left: 20.0, right: 20, top: 120.h),
         child: Hero(
-          tag: "helpFormHero",
+          tag: effectiveTag,
           child: Material(
             color: Colors.transparent,
             child: Padding(

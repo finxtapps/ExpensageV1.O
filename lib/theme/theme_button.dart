@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:expensag/theme/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class ThemeButton extends StatelessWidget {
           builder: (context) => const ThemePickerDialog(),
         );
       },
-      child: const Text('Choose Theme'),
+      child: Text('choose_theme'.tr()),
     );
   }
 }
@@ -29,7 +30,7 @@ class ThemePickerDialog extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
     return AlertDialog(
-      title: const Text('Pick a Theme'),
+      title: Text('pick_a_theme'.tr()),
       content: SizedBox(
         width: double.maxFinite,
         child: Wrap(

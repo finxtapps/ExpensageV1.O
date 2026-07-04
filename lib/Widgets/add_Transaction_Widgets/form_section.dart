@@ -38,18 +38,18 @@ class _AddTransactionFormSectionState extends State<AddTransactionFormSection> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Select Image Source'),
+          title: Text('select_image_source'.tr()),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
                 leading: const Icon(Icons.camera_alt),
-                title: const Text('Camera'),
+                title: Text('camera'.tr()),
                 onTap: () => Navigator.of(context).pop(ImageSource.camera),
               ),
               ListTile(
                 leading: const Icon(Icons.photo_library),
-                title: const Text('Gallery'),
+                title: Text('gallery'.tr()),
                 onTap: () => Navigator.of(context).pop(ImageSource.gallery),
               ),
             ],
@@ -81,14 +81,14 @@ class _AddTransactionFormSectionState extends State<AddTransactionFormSection> {
 
     if (item.isEmpty || amount.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please fill in all fields")),
+        SnackBar(content: Text("please_fill_all_fields".tr())),
       );
       return;
     }
 
     if (_transactionType == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please select Income or Expense")),
+        SnackBar(content: Text("please_select_income_or_expense".tr())),
       );
       return;
     }
@@ -103,8 +103,8 @@ class _AddTransactionFormSectionState extends State<AddTransactionFormSection> {
 
       if (token.isEmpty || userId.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("User not logged in"),
+          SnackBar(
+            content: Text("user_not_logged_in".tr()),
             backgroundColor: Colors.red,
           ),
         );

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
@@ -193,14 +194,14 @@ class _ChangeMpinScreenState extends State<ChangeMpinScreen> {
 
               if (oldPin.length != 4 || newPin.length != 4) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("PIN must be 4 digits")),
+                  SnackBar(content: Text("pin_must_be_4_digits".tr())),
                 );
                 return;
               }
 
               if (savedPin == null) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("No existing PIN found")),
+                  SnackBar(content: Text("no_existing_pin_found".tr())),
                 );
                 return;
               }
@@ -208,7 +209,7 @@ class _ChangeMpinScreenState extends State<ChangeMpinScreen> {
               /// 🔐 VERIFY OLD PIN
               if (oldPin != savedPin) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Old PIN is incorrect")),
+                  SnackBar(content: Text("old_pin_incorrect".tr())),
                 );
                 return;
               }
@@ -217,7 +218,7 @@ class _ChangeMpinScreenState extends State<ChangeMpinScreen> {
               await prefs.setString('mpin', newPin);
 
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("PIN changed successfully")),
+                SnackBar(content: Text("pin_changed_successfully".tr())),
               );
 
               Navigator.pop(context);
@@ -255,7 +256,8 @@ class _ChangeMpinScreenState extends State<ChangeMpinScreen> {
 
 
 
-// import 'package:flutter/material.dart';
+// import 'package:easy_localization/easy_localization.dart';
+//import 'package:flutter/material.dart';
 // import 'package:pinput/pinput.dart';
 // import 'package:provider/provider.dart';
 // import 'package:shared_preferences/shared_preferences.dart';

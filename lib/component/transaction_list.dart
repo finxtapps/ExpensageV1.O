@@ -65,19 +65,57 @@ class _TransactionListState extends State<TransactionList> {
 
   // ---------------- FILTER LOGIC ----------------
   List<TransactionData> _applyFilter(List<TransactionData> transactions) {
-    if (widget.selectedFilter == "Lifetime") return transactions;
+    if (widget.selectedFilter == "Lifetime"||widget.selectedFilter == "आजीवन") return transactions;
 
     final now = DateTime.now();
     DateTime startDate;
 
     switch (widget.selectedFilter) {
-      case "Weekly":
+      case "أسبوعي": //ar
+      case "wöchentlich"://de
+      case "Weekly": //en
+      case "semanal"://es
+      case "hebdomadaire"://fr
+      case "साप्ताहिक"://hi
+      case "毎週"://ja
+      case "每周"://zh
+
+
+
         startDate = now.subtract(const Duration(days: 7));
         break;
-      case "Monthly":
+      case "Monthly": // en
+      case "मासिक": // hi
+      case "شهري": // ar
+      case "monatlich": // de
+      case "mensual": // es
+      case "mensuel": // fr
+      case "毎月": // ja
+      case "每月": // zh
         startDate = DateTime(now.year, now.month - 1, now.day);
         break;
-      case "Yearly":
+
+    // Yearly
+      case "Yearly": // en
+      case "वार्षिक": // hi
+      case "سنوي": // ar
+      case "jährlich": // de
+      case "anual": // es
+      case "annuel": // fr
+      case "毎年": // ja
+      case "每年": // zh
+        startDate = DateTime(now.year - 1, now.month, now.day);
+        break;
+
+    // Lifetime
+      case "Lifetime": // en
+      case "आजीवन": // hi
+      case "مدى الحياة": // ar
+      case "lebenslang": // de
+      case "de por vida": // es
+      case "à vie": // fr
+      case "生涯": // ja
+      case "终身": // zh
         startDate = DateTime(now.year - 1, now.month, now.day);
         break;
       default:
@@ -177,7 +215,7 @@ class _TransactionListState extends State<TransactionList> {
                   final transactions = _applyFilter(provider.transactions);
 
                   if (transactions.isEmpty) {
-                    return const Center(child: Text("No Transactions Found"));
+                    return Center(child: Text("no_transactions_found".tr()));
                   }
 
                   return ListView.builder(

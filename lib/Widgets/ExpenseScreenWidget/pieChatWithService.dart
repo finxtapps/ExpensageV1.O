@@ -398,7 +398,7 @@ class _PieServiceChartWidgetState extends State<PieServiceChartWidget>
                           else
                             Center(
                               child: Text(
-                                "No data available",
+                                "no_data_available".tr(),
                                 style: TextStyle(
                                   color: isDarkMode
                                       ? Colors.white70

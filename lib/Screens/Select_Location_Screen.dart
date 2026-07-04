@@ -70,21 +70,22 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
             child: SafeArea(
               top: false,
-              child:CustomHeader(title: 'Location',),
+              child:CustomHeader(title: 'location'.tr(),),
 
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              "Select your current location",
+              "select_your_current_location".tr(),
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             child: Text(
-              "We require your area code and location for SMS registration confirmation.",
+              "sms_registration_confirmation".tr(),
+              // "We require your area code and location for SMS registration confirmation.",
               style: TextStyle(color:isDarkMode?Colors.black: Colors.grey[600], fontSize:isDarkMode?1: 13),
             ),
           ),
@@ -92,7 +93,7 @@ class _LocationScreenState extends State<LocationScreen> {
             padding: const EdgeInsets.all(16),
             child: TextField(
               decoration: InputDecoration(
-                hintText: "Find your country...",
+                hintText: "find_your_country".tr(),
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color:Theme.of(context).colorScheme.primary),
@@ -155,10 +156,11 @@ class _LocationScreenState extends State<LocationScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding:  EdgeInsets.all(10),
             child: Center(
               child: SizedBox(
                 width: MediaQuery.of(context).size.width*.4,
+
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor:isDarkMode?Color(0xFFD44D5C) :Theme.of(context).colorScheme.primary,

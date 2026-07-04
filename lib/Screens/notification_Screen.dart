@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -78,7 +79,7 @@ class _NotificationsScreenState
                   await NotificationStorage.markAllAsRead();
                   loadNotifications();
                 },
-                child: const Text("Read All"),
+                child: Text("read_all".tr()),
               ),
             ],
           ),

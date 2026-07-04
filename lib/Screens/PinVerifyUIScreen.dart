@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +53,7 @@ class _PinVerifyUIScreenState extends State<PinVerifyUIScreen> {
       for (var controller in _pinControllers) controller.clear();
       _focusNodes[0].requestFocus();
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Invalid PIN!')));
+          .showSnackBar(SnackBar(content: Text('invalid_pin'.tr())));
       _isVerifying = false;
     }
   }

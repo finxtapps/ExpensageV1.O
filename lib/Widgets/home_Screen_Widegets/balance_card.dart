@@ -95,13 +95,12 @@ final monthlyBudget = (_manualBudget ?? 0) - expense;
             showDialog(
               context: context,
               builder: (ctx) => AlertDialog(
-                title: const Text("Alert"),
-                content: const Text(
-                    "Your Monthly Budget is Overflow! Please review your expenses."),
+                title: Text("alert".tr()),
+                content: Text("budget_overflow_msg".tr()),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.of(ctx).pop(),
-                    child:  Text("OK",style: TextStyle(color:isDarkMode? Colors.white:
+                    child:  Text("ok".tr(),style: TextStyle(color:isDarkMode? Colors.white:
                     Theme.of(context).colorScheme.primary
                     ),),
                   ),

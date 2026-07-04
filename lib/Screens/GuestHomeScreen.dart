@@ -128,7 +128,7 @@ class _GuestHomeScreenState extends State<GuestHomeScreen>
                     ),
                     child: const GuestBalanceCard(),
                   ),
-                  const IncomeHelpBanner(),
+                  const IncomeHelpBanner(heroTag: "guestHomeHelpFormHero"),
                 ],
               ),
             ],

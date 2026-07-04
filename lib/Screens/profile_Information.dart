@@ -24,7 +24,7 @@ class _ProfileInfoScreenState extends State<ProfileInfoScreen> {
 
     // Snackbar dikhao
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Log out Successful')),
+      SnackBar(content: Text('log_out_successful'.tr())),
     );
 
     // Navigate to LandingPage
@@ -92,11 +92,11 @@ class _ProfileInfoScreenState extends State<ProfileInfoScreen> {
                                             onTap: () {
 
                                               CustomPopup.show(
-                                                context: context,
-                                                title: "Coming Soon",
-                                                message: "This feature is currently under development and will be available soon.",
+                                                  context: context,
+                                                  title: "coming_soon".tr(),
+                                                  message: "feature_under_development".tr()
+                                                // "This feature is currently under development and will be available soon.",
                                               );
-
                                               // ScaffoldMessenger.of(context).showSnackBar(
                                               //   const SnackBar(content: Text('Invite friends tapped')),
                                               // );
@@ -109,8 +109,9 @@ class _ProfileInfoScreenState extends State<ProfileInfoScreen> {
                                             onTap: () {
                                               CustomPopup.show(
                                                 context: context,
-                                                title: "Coming Soon",
-                                                message: "This feature is currently under development and will be available soon.",
+                                                title: "coming_soon".tr(),
+                                                message: "feature_under_development".tr()
+                                               // "This feature is currently under development and will be available soon.",
                                               );
 
                                             },

@@ -38,10 +38,6 @@ import 'Screens/PinVerifyUIScreen.dart';
 import 'Screens/chnagePinScreen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 
 
 
@@ -55,21 +51,58 @@ Future<void> firebaseMessagingBackgroundHandler(
     RemoteMessage message) async {
   await Firebase.initializeApp();
 
+  String title = message.notification?.title ?? message.data['title'] ?? "Notification";
+  String body = message.notification?.body ?? message.data['body'] ?? "";
+
   await NotificationStorage.saveNotification(
-    title: message.notification?.title ?? "",
-    body: message.notification?.body ?? "",
+    title: title,
+    body: body,
   );
 
-  print("Background Message: ${message.notification?.title}");
+  print("Background Message: $title");
 
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
       channelKey: 'basic_channel',
-      title: message.notification?.title ?? '',
-      body: message.notification?.body ?? '',
+      title: title,
+      body: body,
+      notificationLayout: NotificationLayout.Default,
+      // background handle me data use karna better hota hai
+      payload: Map<String, String>.from(message.data),
     ),
   );
+}
+
+class NotificationController {
+  /// Use this method to detect when a new notification or a schedule is created
+  @pragma("vm:entry-point")
+  static Future<void> onNotificationCreatedMethod(
+      ReceivedNotification receivedNotification) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect every time that a new notification is displayed
+  @pragma("vm:entry-point")
+  static Future<void> onNotificationDisplayedMethod(
+      ReceivedNotification receivedNotification) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect if the user dismissed a notification
+  @pragma("vm:entry-point")
+  static Future<void> onDismissActionMethod(
+      ReceivedAction receivedAction) async {
+    // Your code goes here
+  }
+
+  /// Use this method to detect when the user taps on a notification or action button
+  @pragma("vm:entry-point")
+  static Future<void> onActionReceivedMethod(
+      ReceivedAction receivedAction) async {
+    // Your code goes here
+    print("Notification Action Received: ${receivedAction.title}");
+  }
 }
 
 void main() async {
@@ -92,8 +125,19 @@ void main() async {
         channelName: 'Basic Notifications',
         channelDescription: 'Notification channel',
         importance: NotificationImportance.Max,
+        defaultColor: const Color(0xFFD44D5C),
+        ledColor: Colors.white,
+        channelShowBadge: true,
       ),
     ],
+  );
+
+  // Set Awesome Notification listeners
+  await AwesomeNotifications().setListeners(
+    onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+    onNotificationCreatedMethod: NotificationController.onNotificationCreatedMethod,
+    onNotificationDisplayedMethod: NotificationController.onNotificationDisplayedMethod,
+    onDismissActionReceivedMethod: NotificationController.onDismissActionMethod,
   );
 
   // Awesome permission

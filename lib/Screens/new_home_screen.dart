@@ -12,7 +12,6 @@ import '../Widgets/home_Screen_Widegets/home_header.dart';
 import '../component/transaction_list.dart';
 import '../providerListner/addTransactionProvider.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
-import 'incomeTax&Expenses_help_Screen.dart';
 
 class NewHomeScreen extends StatefulWidget {
   const NewHomeScreen({super.key});
@@ -114,7 +113,7 @@ class _NewHomeScreenState extends State<NewHomeScreen>
   }
 
   void _showFilterDrawer() {
-    final options = ['Lifetime', 'Weekly', 'Monthly', 'Yearly'];
+    final options = ['Lifetime'.tr(), 'Weekly'.tr(), 'Monthly'.tr(), 'Yearly'.tr()];
 
     final RenderBox renderBox =
     _filterIconKey.currentContext!.findRenderObject() as RenderBox;
@@ -208,8 +207,8 @@ class _NewHomeScreenState extends State<NewHomeScreen>
                   print("hhhhhhhhhhhhhhh User not logged in");
 
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("User not logged in"),
+                    SnackBar(
+                      content: Text("user_not_logged_in".tr()),
                       backgroundColor: Colors.red,
                     ),
                   );
@@ -305,7 +304,7 @@ class _NewHomeScreenState extends State<NewHomeScreen>
                       //  budgetNotifier: _budgetNotifier
                     ),
                   ),
-                  IncomeHelpBanner(),
+                  IncomeHelpBanner(heroTag: "homeHelpFormHero"),
                 ],
               ),
             ],

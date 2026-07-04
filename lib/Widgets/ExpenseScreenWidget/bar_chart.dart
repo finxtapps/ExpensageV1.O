@@ -93,13 +93,27 @@ class _BarChartWidgetState extends State<BarChartWidget> {
     switch (selectedFilter) {
       case 'Weekly':
       case 'Week':
+      case "أسبوعي": //ar
+      case "wöchentlich"://de
+      case "semanal"://es
+      case "hebdomadaire"://fr
+      case "साप्ताहिक"://hi
+      case "毎週"://ja
+      case "每周"://zh
         return data.weeklyExpenses.entries
             .map((e) => _ChartData(e.key, e.value.toDouble()))
             .toList();
 
     /// ✅ MONTHLY → SHORT MONTH + FULL 12
-      case 'Monthly':
       case 'Month':
+      case "Monthly": // en
+      case "मासिक": // hi
+      case "شهري": // ar
+      case "monatlich": // de
+      case "mensual": // es
+      case "mensuel": // fr
+      case "毎月": // ja
+      case "每月": // zh
         final Map<String, double> apiMonthData = {};
 
         data.monthlyExpenses.forEach((key, value) {
@@ -116,7 +130,13 @@ class _BarChartWidgetState extends State<BarChartWidget> {
 
       case 'Yearly':
       case 'Year':
-      case 'Lifetime':
+      case "वार्षिक": // hi
+      case "سنوي": // ar
+      case "jährlich": // de
+      case "anual": // es
+      case "annuel": // fr
+      case "毎年": // ja
+      case "每年": // zh
         return data.yearlyTotal.entries
             .map((e) => _ChartData(e.key, e.value.toDouble()))
             .toList();
@@ -204,7 +224,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
     if (chartData.isEmpty) {
       return SizedBox(
         height: 250.h,
-        child: const Center(child: Text('No data available')),
+        child: Center(child: Text('no_data_available'.tr())),
       );
     }
 

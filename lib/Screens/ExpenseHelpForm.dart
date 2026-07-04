@@ -50,7 +50,7 @@ class _HelpInManageExpenseFormState extends State<HelpInManageExpenseForm> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Error picking file: $e"),
+          content: Text("error_picking_file".tr(args: [e.toString()])),
           backgroundColor: Colors.red,
         ),
       );
@@ -91,8 +91,8 @@ class _HelpInManageExpenseFormState extends State<HelpInManageExpenseForm> {
           setState(() => _uploadedFile = null);
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Something went wrong!"),
+            SnackBar(
+              content: Text("something_went_wrong".tr()),
               backgroundColor: Colors.red,
             ),
           );
@@ -100,7 +100,7 @@ class _HelpInManageExpenseFormState extends State<HelpInManageExpenseForm> {
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("Error: $e"),
+            content: Text("error".tr(args: [e.toString()])),
             backgroundColor: Colors.red,
           ),
         );

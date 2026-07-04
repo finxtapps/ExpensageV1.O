@@ -90,7 +90,7 @@ class SettingsContent extends StatelessWidget {
               _buildSettingItem(
                 context,
                 icon: Icons.lock_outline,
-                title: 'Password & Security',
+                title: "security_and_privacy".tr(),
                 hasArrow: true,
                 onTap: () {
                   Navigator.pushNamed(context, '/set_pin_and_fingerprint');
@@ -131,9 +131,10 @@ class SettingsContent extends StatelessWidget {
                 hasArrow: true,
                 onTap: () {
                   CustomPopup.show(
-                    context: context,
-                    title: "Coming Soon",
-                    message: "This feature is currently under development and will be available soon.",
+                      context: context,
+                      title: "coming_soon".tr(),
+                      message: "feature_under_development".tr()
+                    // "This feature is currently under development and will be available soon.",
                   );
                 },
               ),
@@ -310,7 +311,7 @@ class _LanguagePickerSheetState extends State<LanguagePickerSheet> {
           ),
           child: SafeArea(
               top: false,
-              child: CustomHeader(title: 'Language',
+              child: CustomHeader(title: 'language'.tr(),
                 fontsize: 25,
 
               )
@@ -324,7 +325,7 @@ class _LanguagePickerSheetState extends State<LanguagePickerSheet> {
           padding:  EdgeInsets.only(left: 12.w,right: 12.w,top:20.h),
           child: TextField(
             decoration: InputDecoration(
-              hintText: 'Search language',
+              hintText: 'search_language'.tr(),
               prefixIcon: const Icon(Icons.search),
               filled: true,
               fillColor: isDarkMode

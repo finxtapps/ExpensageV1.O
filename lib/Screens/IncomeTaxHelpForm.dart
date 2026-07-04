@@ -52,7 +52,7 @@ class _IncomeTextHelpFormState extends State<IncomeTextHelpForm> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("Error picking file: $e"),
+          content: Text("error_picking_file".tr(args: [e.toString()])),
           backgroundColor: Colors.red,
         ),
       );
@@ -83,8 +83,8 @@ class _IncomeTextHelpFormState extends State<IncomeTextHelpForm> {
 
     if (response != null && response["success"] == true) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Form submitted successfully!"),
+        SnackBar(
+          content: Text("form_submitted_successfully".tr()),
           backgroundColor: Colors.green,
         ),
       );

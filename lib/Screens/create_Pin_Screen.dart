@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../component/customHeader.dart';
 import '../theme/header_Color.dart';
 import '../providerListner/theme_notifier.dart';
@@ -81,7 +81,7 @@ class _MpinScreenState extends State<MpinScreen> {
             ),
             child: SafeArea(
               top: false,
-              child: CustomHeader(title: 'Create your four digit pin',
+              child: CustomHeader(title: 'create_your_four_digit_pin'.tr(),
               fontsize: 24,
               )
 
@@ -92,8 +92,8 @@ class _MpinScreenState extends State<MpinScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Create PIN",
+                 Text(
+                  "create_pin".tr(),
                   style: TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
                 ),
@@ -118,8 +118,8 @@ class _MpinScreenState extends State<MpinScreen> {
                   },
                 ),
                 const SizedBox(height: 32),
-                const Text(
-                  "Re-enter PIN",
+                 Text(
+                  "re_enter_pin".tr(),
                   style: TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
                 ),
@@ -145,7 +145,7 @@ class _MpinScreenState extends State<MpinScreen> {
                   onCompleted: (_) {
                     if (_createPinController.text != _reenterPinController.text) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("MPINs do not match")),
+                        SnackBar(content: Text("mpins_do_not_match".tr())),
                       );
                     }
                   },
@@ -171,18 +171,18 @@ class _MpinScreenState extends State<MpinScreen> {
                 await _saveMpin(_createPinController.text);
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("MPIN saved successfully!")),
+                  SnackBar(content: Text("mpin_saved_successfully".tr())),
                 );
 
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Please enter valid MPIN")),
+                  SnackBar(content: Text("please_enter_valid_mpin".tr())),
                 );
               }
             },
-            child: const Text(
-              "Save",
-              style: TextStyle(fontSize: 16, color: Colors.white),
+            child: Text(
+              "save".tr(),
+              style: const TextStyle(fontSize: 16, color: Colors.white),
             ),
           )
         ],
@@ -211,7 +211,7 @@ class _MpinScreenState extends State<MpinScreen> {
 
 
 
-// import 'package:flutter/material.dart';
+// import 'package:easy_localization/easy_localization.dart';
 // import 'package:pinput/pinput.dart';
 // import 'package:provider/provider.dart';
 // import 'package:shared_preferences/shared_preferences.dart';

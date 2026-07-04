@@ -26,6 +26,7 @@ class ExpenseanalysisHeader extends StatelessWidget {
               padding:  EdgeInsets.symmetric(vertical: 50.0),
               child:  IncomeHelpBanner(
                 customPadding: true,
+                heroTag: "analysisHelpFormHero",
               ),
             ),
           ),
