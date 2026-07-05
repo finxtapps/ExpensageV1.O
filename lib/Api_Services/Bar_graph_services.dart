@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import '../Api_Models/Bar_graph_model.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 
 class BarGraphService {
-  static const String baseUrl =
-      "https://expense-tracker-2k3t.onrender.com/api/expenses/bar-graph";
+  static final String baseUrl =
+      "${NetworkManager().baseUrl}expenses/bar-graph";
 
   final Dio _dio = Dio();
   final SharedPreferenceMethods _pref = SharedPreferenceMethods();

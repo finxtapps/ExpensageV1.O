@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 
 
 class NotificationService {
@@ -28,7 +29,7 @@ class NotificationService {
       print("FCM TOKEN => $fcmToken");
 
       final response = await Dio().post(
-        "https://expense-tracker-2k3t.onrender.com/api/notifications/token/register",
+        "${NetworkManager().baseUrl}notifications/token/register",
         data: {
           "fcmToken": fcmToken,
         },
@@ -56,7 +57,7 @@ class NotificationService {
       if (authToken == null) return;
 
       await Dio().delete(
-        "https://expense-tracker-2k3t.onrender.com/api/notifications/token",
+        "${NetworkManager().baseUrl}notifications/token",
         options: Options(
           headers: {
             "Authorization": "Bearer $authToken",

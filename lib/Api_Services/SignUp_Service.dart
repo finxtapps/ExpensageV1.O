@@ -4,12 +4,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../Api_Models/SignUp_Model.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 import 'notification_service.dart';
 
 class SignUpAuthService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: "https://expense-tracker-2k3t.onrender.com/api/auth",
+      baseUrl: "${NetworkManager().baseUrl}auth",
       connectTimeout: const Duration(seconds: 350),
       receiveTimeout: const Duration(seconds: 350),
       headers: {

@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
 
 import '../Api_Models/top_category_model.dart';
+import '../ulitity/NetworkManager.dart';
 
 class TopCategoryService {
   final Dio _dio = Dio();
 
   final String baseUrl =
-      "https://expense-tracker-2k3t.onrender.com/api/categories/top";
+      "${NetworkManager().baseUrl}categories/top";
 
   Future<TopCategoryResponse?> getTopCategories({String? period}) async {
     try {

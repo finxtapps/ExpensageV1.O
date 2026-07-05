@@ -4,11 +4,12 @@ import 'package:provider/provider.dart';
 import '../Api_Models/SignIn_model.dart';
 import '../providerListner/profile_notifier.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 import 'notification_service.dart';
 
 class LoginAuthService {
-  static const String _baseUrl =
-      'https://expense-tracker-2k3t.onrender.com/api/auth';
+  static final String _baseUrl =
+      "${NetworkManager().baseUrl}auth";
 
   final Dio _dio = Dio(
     BaseOptions(

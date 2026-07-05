@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import '../Api_Models/monthlyBudgetModel.dart';
+import '../ulitity/NetworkManager.dart';
 
 class BudgetService {
-  static const String baseUrl =
-      "https://expense-tracker-2k3t.onrender.com/api/budgets";
+  static final String baseUrl =
+      "${NetworkManager().baseUrl}budgets";
 
   final Dio _dio;
 

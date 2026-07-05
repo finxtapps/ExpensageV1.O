@@ -3,13 +3,14 @@ import 'package:dio/dio.dart';
 
 import '../Api_Models/expenseHelpFormModel.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 
 class ManageExpenseService {
   final SharedPreferenceMethods pref = SharedPreferenceMethods();
   final Dio _dio = Dio();
 
   final String baseUrl =
-      "https://expense-tracker-2k3t.onrender.com/api/manage-expense";
+      "${NetworkManager().baseUrl}manage-expense";
 
   Future<ExpenseHelpFormModel?> submitExpense({
     required String fullName,

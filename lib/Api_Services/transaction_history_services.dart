@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import '../Api_Models/transaction_History_model.dart';
+import '../ulitity/NetworkManager.dart';
 
 
 class TransactionHistoryService {
   final Dio _dio = Dio();
-
   final String apiUrl =
-      "https://expense-tracker-2k3t.onrender.com/api/transaction-history";
+      "${NetworkManager().baseUrl}transaction-history";
 
   Future<TransactionHistoryModel?> getTransactionHistory(
       String userId, String token) async {

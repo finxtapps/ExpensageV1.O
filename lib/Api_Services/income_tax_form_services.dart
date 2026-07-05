@@ -2,13 +2,14 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import '../Api_Models/Income_tax_help_form_model.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 
 class IncomeTaxHelpService {
   final Dio _dio = Dio();
   final SharedPreferenceMethods pref = SharedPreferenceMethods();
 
   final String apiUrl =
-      "https://expense-tracker-2k3t.onrender.com/api/income-tax-help";
+      "${NetworkManager().baseUrl}income-tax-help";
 
   Future<dynamic> submitIncomeTaxHelp({
     required IncomeTaxHelpModel model,

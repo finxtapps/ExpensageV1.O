@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 
 class GoogleAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -12,7 +13,7 @@ class GoogleAuthService {
 
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: "https://expense-tracker-2k3t.onrender.com/api/auth",
+      baseUrl: "${NetworkManager().baseUrl}auth",
       headers: {
         "Content-Type": "application/json",
       },
