@@ -61,7 +61,7 @@ class LoginAuthService {
           if (imagePath != null && imagePath.isNotEmpty) {
 
             String fullImageUrl =
-                "https://expense-tracker-2k3t.onrender.com$imagePath";
+                "${NetworkManager().baseUrl}$imagePath";
 
             await _prefs.saveUserImageFilename(fullImageUrl);
 

@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 
+import '../ulitity/NetworkManager.dart';
+
 class TransactionService{
 final Dio dio = Dio(
   BaseOptions(
-    baseUrl: "https://expense-tracker-2k3t.onrender.com/api",
+    baseUrl: "${NetworkManager().baseUrl}",
     //baseUrl: "https://expense-tracker-backend-48vm.onrender.com/api",
     connectTimeout: const Duration(seconds: 15),
     receiveTimeout: const Duration(seconds: 15),

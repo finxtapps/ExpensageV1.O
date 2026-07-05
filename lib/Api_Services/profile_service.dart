@@ -3,12 +3,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import '../shared_prefrence/SharedPrefrenceMethods.dart';
+import '../ulitity/NetworkManager.dart';
 
 class ProfileService {
 
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: "https://expense-tracker-2k3t.onrender.com/api",
+      baseUrl: "${NetworkManager().baseUrl}",
     ),
   );
 
@@ -72,7 +73,7 @@ class ProfileService {
 
         if (image != null && image.isNotEmpty) {
           image =
-          "https://expense-tracker-2k3t.onrender.com$image";
+          "${NetworkManager().baseUrl}$image";
         }
 
         await _prefs.saveUserName(profile?["name"] ?? "");
