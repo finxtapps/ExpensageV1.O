@@ -649,6 +649,7 @@ class _DynamicIconTextFieldState extends State<DynamicIconTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ConstrainedBox(
+
         constraints: const BoxConstraints(minHeight: 56),
         child: Row(
           children: [

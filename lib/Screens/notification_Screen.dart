@@ -25,14 +25,36 @@ class _NotificationsScreenState
   void initState() {
     super.initState();
     loadNotifications();
+    NotificationStorage.notifier.addListener(_reloadNotifications);
+
+  }
+
+  void _reloadNotifications() {
+    loadNotifications();
+  }
+
+
+  @override
+  void dispose() {
+    NotificationStorage.notifier.removeListener(_reloadNotifications);
+    super.dispose();
   }
 
   Future<void> loadNotifications() async {
-    notifications =
-    await NotificationStorage.getNotifications();
+    notifications = await NotificationStorage.getNotifications();
 
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
+
+  //
+  // Future<void> loadNotifications() async {
+  //   notifications =
+  //   await NotificationStorage.getNotifications();
+  //
+  //   setState(() {});
+  // }
  // ✅ Constructor
   @override
   Widget build(BuildContext context) {
@@ -79,15 +101,16 @@ class _NotificationsScreenState
                   await NotificationStorage.markAllAsRead();
                   loadNotifications();
                 },
-                child: Text("read_all".tr()),
+                child: Text("read_all".tr(),style: TextStyle(color: isDarkMode ? Color(0xFFD44D5C) : Theme.of(context).colorScheme.primary),),
               ),
             ],
           ),
 
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:  EdgeInsets.symmetric(horizontal: 8.0,vertical: 8),
               child: ListView.builder(
+                padding: EdgeInsets.zero,
                 itemCount: notifications.length,
                   itemBuilder: (context, index) {
                     final item = notifications[index];
@@ -105,11 +128,13 @@ class _NotificationsScreenState
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: isRead
-                              ? Colors.transparent
-                              : Colors.blue.withOpacity(0.08),
+                              ? Theme.of(context).colorScheme.primary.withOpacity(0.2)
+                              : Theme.of(context).colorScheme.primary.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: isRead ? Colors.black12 : Colors.blue,
+                            color: isRead ?
+                            isDarkMode ? Colors.white : Theme.of(context).colorScheme.primary
+                                :isDarkMode ? Color(0xFFD44D5C) : Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         child: Column(
@@ -123,7 +148,9 @@ class _NotificationsScreenState
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
-                                      color: isRead ? Colors.grey : Colors.black,
+                                      color: isRead ?
+                                      isDarkMode?Colors.white :Colors.grey
+                                          : isDarkMode ? Colors.white :Colors.black,
                                     ),
                                   ),
                                 ),
@@ -133,8 +160,8 @@ class _NotificationsScreenState
                                   Container(
                                     height: 10,
                                     width: 10,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.red,
+                                    decoration:  BoxDecoration(
+                                      color: isDarkMode? Color(0xFFD44D5C) :Theme.of(context).colorScheme.primary,
                                       shape: BoxShape.circle,
                                     ),
                                   ),

@@ -269,11 +269,12 @@ class _TransactionListState extends State<TransactionList> {
                               width: screenWidth * 0.1,
                               height: screenWidth * 0.1,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: isDarkMode? Colors.grey:Colors.white,
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               child: Icon(
                                 getIconFromCategory(transaction.category),
+                                color:  isDarkMode ? Colors.white : Colors.black,
                                 size: screenWidth * 0.05,
                               ),
                             ),

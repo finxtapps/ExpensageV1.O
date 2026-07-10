@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../../Api_Services/notification_storage.dart';
 import '../../providerListner/profile_notifier.dart';
 import '../../shared_prefrence/SharedPrefrenceMethods.dart';
 
@@ -54,6 +55,7 @@ class _HomeHeaderState extends State<HomeHeader> {
 
   @override
   Widget build(BuildContext context) {
+
     int unreadCount = widget.notifications
         .where((e) => (e["isRead"] ?? false) == false)
         .length;
@@ -118,7 +120,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                       ],
                     ),
                   ),
-                  // Notification Icon
+
                   Stack(
                     children: [
                       GestureDetector(
@@ -127,48 +129,54 @@ class _HomeHeaderState extends State<HomeHeader> {
                         },
                         child: Icon(
                           Icons.notifications,
-                          color: isDarkMode ? Color(0xFFD44D5C) : Colors.white,
+                          size: 32.h,
+                          color: isDarkMode ? const Color(0xFFD44D5C) : Colors.white,
                         ),
                       ),
 
-                      if (unreadCount > 0)
-                        Positioned(
-                          right: 0,
-                          child: Container(
-                            padding: EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Text(
-                              unreadCount.toString(),
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
+                      ValueListenableBuilder<int>(
+                        valueListenable: NotificationStorage.notifier,
+                        builder: (context, _, __) {
+                          return FutureBuilder<List<Map<String, dynamic>>>(
+                            future: NotificationStorage.getNotifications(),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) return const SizedBox();
 
-                  // InkWell(
-                  //   onTap: (){
-                  //     Navigator.pushNamed(context, '/notification');
-                  //   },
-                  //   child: Container(
-                  //     padding:  EdgeInsets.all(8),
-                  //     decoration: BoxDecoration(
-                  //       color:isDarkMode? Color(0xFFD44D5C): Colors.white.withOpacity(0.2),
-                  //       borderRadius: BorderRadius.circular(12),
-                  //     ),
-                  //     child: const Icon(
-                  //       Icons.notifications_outlined,
-                  //       color: Colors.white,
-                  //       size: 24,
-                  //     ),
-                  //   ),
-                  // ),
+                              final unreadCount = snapshot.data!
+                                  .where((e) => (e["isRead"] ?? false) == false)
+                                  .length;
+
+                              if (unreadCount == 0) return const SizedBox();
+
+                              return Positioned(
+                                right: 0,
+                                top: -1,
+                                child: Container(
+                                  height: 22.h,
+                                 alignment: Alignment.center,
+                                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                                  decoration:  BoxDecoration(
+                                    color: isDarkMode ? Color(0xFFD44D5C) : Theme.of(context).colorScheme.primary,
+                                    shape: BoxShape.circle,
+
+                                  ),
+                                  child: Text(
+                                    unreadCount.toString(),
+                                    style:  TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ],
+                  )
+
                 ],
               ),
             ),

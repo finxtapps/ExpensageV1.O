@@ -102,7 +102,7 @@ class _PieServiceChartWidgetState extends State<PieServiceChartWidget>
     }
 
     final result = await _service.getTopCategories(period: period);
-
+print("cccpppccc ${result}");
     if (!mounted) return;
 
     setState(() {

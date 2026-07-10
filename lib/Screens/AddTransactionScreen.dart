@@ -1,5 +1,3 @@
-// CHANGE: File renamed to add_transaction_screen.dart (use same path in your project)
-// NEW: Added SharedPreferences import and TransactionService usage
 
 import 'package:flutter/material.dart';
 

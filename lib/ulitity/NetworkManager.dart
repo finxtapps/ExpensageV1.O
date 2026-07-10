@@ -8,5 +8,5 @@ final class NetworkManager {
     return _instance;
   }
 
-  String baseUrl = "${NetworkManager().baseUrl}";
+  String baseUrl = "https://expense-tracker-2k3t.onrender.com/api/";
 }

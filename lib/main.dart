@@ -40,13 +40,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 
-
-
-
-
-
-
-
 Future<void> firebaseMessagingBackgroundHandler(
     RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -163,24 +156,79 @@ void main() async {
   print("FCM TOKEN => $token");
 
   // Foreground notification
+
   FirebaseMessaging.onMessage.listen(
         (RemoteMessage message) async {
 
-      print(
-          "Foreground Message => ${message.notification?.title}");
+      String title =
+          message.notification?.title ??
+              message.data['title'] ??
+              "Notification";
 
+      String body =
+          message.notification?.body ??
+              message.data['body'] ??
+              "";
+
+      print("Foreground Message => $title");
+
+      // Save Notification
+      await NotificationStorage.saveNotification(
+        title: title,
+        body: body,
+      );
+
+      // Show Notification
       await AwesomeNotifications().createNotification(
         content: NotificationContent(
           id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
           channelKey: 'basic_channel',
-          title: message.notification?.title ?? '',
-          body: message.notification?.body ?? '',
+          title: title,
+          body: body,
+          notificationLayout: NotificationLayout.Default,
         ),
       );
     },
   );
 
-  // Notification Click
+
+  // FirebaseMessaging.onMessage.listen(
+  //       (RemoteMessage message) async {
+  //
+  //     String title =
+  //         message.notification?.title ??
+  //             message.data['title'] ??
+  //             "Notification";
+  //
+  //     String body =
+  //         message.notification?.body ??
+  //             message.data['body'] ??
+  //             "";
+  //
+  //     print("Foreground Message => $title");
+  //
+  //     // ✅ SAVE TO SHARED PREFERENCES
+  //     await NotificationStorage.saveNotification(
+  //       title: title,
+  //       body: body,
+  //     );
+  //
+  //     print("Notification Saved");
+  //
+  //     // ✅ SHOW LOCAL NOTIFICATION
+  //     await AwesomeNotifications().createNotification(
+  //       content: NotificationContent(
+  //         id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
+  //         channelKey: 'basic_channel',
+  //         title: title,
+  //         body: body,
+  //       ),
+  //     );
+  //   },
+  // );
+
+
+
   FirebaseMessaging.onMessageOpenedApp.listen(
         (RemoteMessage message) {
       print("Notification Clicked");
