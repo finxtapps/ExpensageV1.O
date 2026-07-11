@@ -1,5 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:expensag/providerListner/DashboardProvider.dart';
+import 'package:expensag/providerListner/TopCategoryExpenseProvider.dart';
 import 'package:expensag/providerListner/addTransactionProvider.dart';
 import 'package:expensag/providerListner/profile_notifier.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -192,40 +193,6 @@ void main() async {
   );
 
 
-  // FirebaseMessaging.onMessage.listen(
-  //       (RemoteMessage message) async {
-  //
-  //     String title =
-  //         message.notification?.title ??
-  //             message.data['title'] ??
-  //             "Notification";
-  //
-  //     String body =
-  //         message.notification?.body ??
-  //             message.data['body'] ??
-  //             "";
-  //
-  //     print("Foreground Message => $title");
-  //
-  //     // ✅ SAVE TO SHARED PREFERENCES
-  //     await NotificationStorage.saveNotification(
-  //       title: title,
-  //       body: body,
-  //     );
-  //
-  //     print("Notification Saved");
-  //
-  //     // ✅ SHOW LOCAL NOTIFICATION
-  //     await AwesomeNotifications().createNotification(
-  //       content: NotificationContent(
-  //         id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
-  //         channelKey: 'basic_channel',
-  //         title: title,
-  //         body: body,
-  //       ),
-  //     );
-  //   },
-  // );
 
 
 
@@ -275,6 +242,10 @@ void main() async {
           ),
           ChangeNotifierProvider(
               create: (_) => ProfileNotifier()),
+
+          ChangeNotifierProvider(
+            create: (_) => TopCategoryProvider(),
+          ),
         ],
         child: const MyApp(),
       ),

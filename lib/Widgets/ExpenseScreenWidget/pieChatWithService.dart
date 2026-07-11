@@ -7,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import '../../Api_Models/top_category_model.dart';
 import '../../Api_Services/top_category_service.dart';
 import '../../component/Pie_chart_time _filter.dart';
+import '../../providerListner/TopCategoryExpenseProvider.dart';
 import '../../theme/header_Color.dart';
 import '../../providerListner/theme_notifier.dart';
 
@@ -39,6 +40,7 @@ class _PieServiceChartWidgetState extends State<PieServiceChartWidget>
     [Colors.pinkAccent, Colors.redAccent],
   ];
 
+
   @override
   void initState() {
     super.initState();
@@ -51,15 +53,49 @@ class _PieServiceChartWidgetState extends State<PieServiceChartWidget>
     _animation =
         CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic);
 
-    _fetchData();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
+
+      /// Provider se first API hit
+      context.read<TopCategoryProvider>().refresh();
+
       if (widget.active) {
         _controller.reset();
         _startAnimation();
       }
     });
   }
+
+
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   _controller = AnimationController(
+  //     vsync: this,
+  //     duration: const Duration(milliseconds: 1500),
+  //   );
+  //
+  //   _animation =
+  //       CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic);
+  //
+  //   _fetchData();
+  //
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     if (widget.active) {
+  //       _controller.reset();
+  //       _startAnimation();
+  //     }
+  //   });
+  //
+  //
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     context.read<TopCategoryProvider>()
+  //         .fetchTopCategories(period: "yearly");
+  //   });
+  //
+  //
+  // }
 
   @override
   void dispose() {
@@ -146,6 +182,12 @@ print("cccpppccc ${result}");
 
   @override
   Widget build(BuildContext context) {
+
+    final provider = context.watch<TopCategoryProvider>();
+
+    _apiResponse = provider.response;
+    _isLoading = provider.isLoading;
+
     final isDarkMode =
         Theme.of(context).brightness == Brightness.dark;
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -204,13 +246,22 @@ print("cccpppccc ${result}");
                                 : Colors.black87,
                           ),
                         ),
+
                         CustomPieChartTimeFilter(
-                          selectedOption: selectedFilter,
+                          selectedOption: provider.selectedFilter,
                           onChanged: (value) {
-                            setState(() => selectedFilter = value);
-                            _fetchData();
+                            context.read<TopCategoryProvider>().changeFilter(value);
                           },
                         ),
+
+
+                        // CustomPieChartTimeFilter(
+                        //   selectedOption: selectedFilter,
+                        //   onChanged: (value) {
+                        //     setState(() => selectedFilter = value);
+                        //     _fetchData();
+                        //   },
+                        // ),
                       ],
                     ),
 
